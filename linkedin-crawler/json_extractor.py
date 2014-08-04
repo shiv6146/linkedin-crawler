@@ -7,7 +7,7 @@ def returnDetails(cmp_name,n):
     This function takes in company name to be searched as argument, and returns
     the id of the employees as keys mapped to their basic info
     '''
-    path="Enter your full path where the script is located" #Even on Windows use only forward slashes (Eg):"C:/Python27/Scripts/scraping/profoundis/"
+    path="C:/Python27/Scripts/scraping/linkedin/" #Even on Windows use only forward slashes (Eg):"C:/Python27/Scripts/scraping/profoundis/"
     dom_filename="dom.txt"
     pattern_start='<code id="voltron_srp_main-content" style="display:none;"><!--' #This is the pattern that uniquely distinguishes HTML and JSON in the page source
     pattern_end='--></code>' #This is the delimiter which denotes the end of JSON
@@ -34,7 +34,8 @@ def returnDetails(cmp_name,n):
                     for j in range(len(snippets)):
                         temp=snippets[j]["bodyList"]
                         temp=[str(s).replace('<strong class="highlight">','').replace('</strong>','').replace('&amp;','&') for s in temp]
-                        details.append(str(snippets[j]["fieldName"])+' -> '+temp)
+                        for k in temp:
+                            details.append(str(snippets[j]["fieldName"])+' -> '+k)
                     d[i_d]=details
                     details=[]
                 else:
