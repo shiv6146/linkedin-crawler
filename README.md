@@ -10,8 +10,8 @@ It returns only the very basic info of the employees, such as their name, locati
 
 Requirements
 ============
-Python 2.7
-BeautifulSoup
+1. Python 2.7
+2. BeautifulSoup
 
 Steps
 =====
