@@ -4,7 +4,7 @@ import urllib2
 import urllib
 import re
 import json_extractor #Custom written module, that extracts JSON from the DOM
-from bs4 import BeautifulSoup
+import BeautifulSoup
 
 username = "username@email.com" #Enter the linkedin username
 password = "password" #Enter the linkedin password
@@ -66,7 +66,7 @@ class LinkedInParser(object):
         Handle login. This should populate our cookie jar.
         """
         html = self.loadPage("https://www.linkedin.com/")
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup.BeautifulSoup(html)
         csrf = soup.find(id="loginCsrfParam-login")['value']
 
         login_data = urllib.urlencode({
@@ -81,7 +81,7 @@ class LinkedInParser(object):
 
     def searchCompany(self,name):
         html=self.loadPage("http://www.linkedin.com/vsearch/p?type=people&keywords="+name)
-        soup=BeautifulSoup(html)
+        soup=BeautifulSoup.BeautifulSoup(html)
         if(os.path.isfile(path+dom_filename)):
             os.remove(path+dom_filename)
         f=open("dom.txt","a")
