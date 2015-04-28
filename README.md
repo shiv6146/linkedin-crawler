@@ -8,4 +8,14 @@ searches the employees from that company.
 
 It returns only the very basic info of the employees, such as their name, location, designation, education.
 
-Its been written in Python with the help of BeautifulSoup to parse the DOM and json module to extract and then parse it.
+Requirements
+============
+Python 2.7
+BeautifulSoup
+
+Steps
+=====
+1. Clone the repository into your local machine
+2. Enter your linkedin username and password in the linkedin.py script
+3. Enter the absolute path where your script resides in the linkedin.py and json_extractor.py scripts
+4. Finally run the linkedin.py script
