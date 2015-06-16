@@ -5,19 +5,20 @@ import urllib
 import re
 import json_extractor #Custom written module, that extracts JSON from the DOM
 import BeautifulSoup
+import getpass
 
-username = "username@email.com" #Enter the linkedin username
-password = "password" #Enter the linkedin password
+username = raw_input("Enter your linkedin username : ")
+password = getpass.getpass("Enter your linkedin password : ")
 
 cookie_filename = "parser.cookies.txt" #Cookies set by linkedin are stored
 dom_filename="dom.txt" #The entire DOM of the page currently viewed is stored
-path="Enter your full path where the script is located" #Even on Windows use only forward slashes (Eg):"C:/Python27/Scripts/scraping/profoundis/"
+path=os.path.split(__file__)[0]
 
 class LinkedInParser(object):
 
     def __init__(self, login, password):
-        if(os.path.isfile(path+cookie_filename)):
-            os.remove(path+cookie_filename)
+        if(os.path.isfile(os.path.join(path,cookie_filename))):
+            os.remove(os.path.join(path,cookie_filename))
         """ Start up... """
         self.login = login
         self.password = password
@@ -82,8 +83,8 @@ class LinkedInParser(object):
     def searchCompany(self,name):
         html=self.loadPage("http://www.linkedin.com/vsearch/p?type=people&keywords="+name)
         soup=BeautifulSoup.BeautifulSoup(html)
-        if(os.path.isfile(path+dom_filename)):
-            os.remove(path+dom_filename)
+        if(os.path.isfile(os.path.join(path,dom_filename))):
+            os.remove(os.path.join(path,dom_filename))
         f=open("dom.txt","a")
         f.write(str(soup))
         f.close()

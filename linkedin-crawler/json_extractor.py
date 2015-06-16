@@ -7,14 +7,14 @@ def returnDetails(cmp_name,n):
     This function takes in company name to be searched as argument, and returns
     the id of the employees as keys mapped to their basic info
     '''
-    path="The complete path to where your script resides" #Even on Windows use only forward slashes (Eg):"C:/Python27/Scripts/scraping/profoundis/"
+    path=os.path.split(__file__)[0]
     dom_filename="dom.txt"
     pattern_start='<code id="voltron_srp_main-content" style="display:none;"><!--' #This is the pattern that uniquely distinguishes HTML and JSON in the page source
     pattern_end='--></code>' #This is the delimiter which denotes the end of JSON
     details=[] #Details of employees
     d={} #Linkedin employee-id mapped to the details of the respective employees
 
-    if(os.path.isfile(path+dom_filename)):
+    if(os.path.isfile(os.path.join(path,dom_filename))):
         f=open(dom_filename,"r")
         dom=f.read()
         json_content=dom[dom.find(pattern_start)+len(pattern_start):dom.find(pattern_end)]
