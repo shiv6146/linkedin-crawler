@@ -16,6 +16,10 @@ Requirements
 Steps
 =====
 1. Clone the repository into your local machine
-2. Enter your linkedin username and password in the linkedin.py script
-3. Enter the absolute path where your script resides in the linkedin.py and json_extractor.py scripts
-4. Finally run the linkedin.py script
+2. Run the linkedin.py script
+3. Enter your linkedin username and password
+4. Enter the name of the company and number of employee details to be crawled from the company
+
+Note
+====
+It is a very basic crawler that might be unstable at times as it doesnot use any Linkedin API
